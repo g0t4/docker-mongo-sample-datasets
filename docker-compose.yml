@@ -1,0 +1,15 @@
+version: '2'
+
+services:
+  mongo:
+    image: mongo
+  mongo_sample_datasets:
+    image: mongo-sample-datasets:dev
+    environment:
+      - "MONGO_SERVER=mongo"
+  rockmongo:
+    image: weshigbee/rockmongo
+    environment:
+      - "MONGO_SERVER=mongo"
+    ports:
+      - "8080:80"
