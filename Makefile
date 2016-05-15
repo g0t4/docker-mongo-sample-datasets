@@ -1,6 +1,6 @@
 .PHONY: build run run_attached shell
 
-NAME=mongo-sample-restaurants
+NAME=mongo-sample-datasets
 VERSION=dev
 IMAGE_NAME=$(NAME):$(VERSION)
 HOST_PORT=27017

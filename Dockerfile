@@ -9,6 +9,7 @@ RUN apt-get update \
   
 RUN wget https://raw.githubusercontent.com/mongodb/docs-assets/primer-dataset/primer-dataset.json
 
-ADD sample-entrypoint.sh /examples/sample-entrypoint.sh
+ENV MONGO_SERVER= MONGO_PORT=27017 MONGO_DATABASE=test
 
+ADD sample-entrypoint.sh /examples/sample-entrypoint.sh
 ENTRYPOINT ["/examples/sample-entrypoint.sh"]
