@@ -1,15 +1,23 @@
 version: '2'
 
 services:
-  mongo:
-    image: mongo
-  mongo_sample_datasets:
-    image: mongo-sample-datasets:dev
-    environment:
-      - "MONGO_SERVER=mongo"
-  rockmongo:
+  mongo_empty:
+    image: mongo # official image has no sample data
+  # rockmongo GUI pointed at empty mongo server
+  rockmongo_empty:
     image: weshigbee/rockmongo
     environment:
-      - "MONGO_SERVER=mongo"
+      - "MONGO_SERVER=mongo_empty"
     ports:
-      - "8080:80"
+      - "8090:80"
+
+  mongo_with_data:
+    build: . # build our own image with sample data
+    image: mongo-sample-datasets:dev
+  # rockmongo GUI pointed at mongo server with data
+  rockmongo_with_data:
+    image: weshigbee/rockmongo
+    environment:
+      - "MONGO_SERVER=mongo_with_data"
+    ports:
+      - "8091:80"
