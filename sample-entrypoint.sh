@@ -29,5 +29,5 @@ if $is_local; then
     # kill and re-run mongo, so we make sure we substitute the mongod process as the container PID 1, maybe a way around this?
     kill $pid
     wait # wait for kill to go through or we'll try to launch two instances of mongod
-    exec mongod
+    exec mongod --bind_ip_all
 fi
